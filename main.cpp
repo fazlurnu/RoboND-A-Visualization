@@ -240,10 +240,15 @@ void visualization(Map map, Planner planner)
     }
 
     // TODO: Plot start and end states in blue colors using o and * respectively
-
+    cout << "Plotting start and end states" << endl;
+    plt::plot({ (double) planner.start[0] }, { (double) planner.start[1] }, "bo");
+    plt::plot({ (double) planner.goal[0] }, { (double) planner.goal[1] }, "b*");
     
     // TODO: Plot the robot path in blue color using a .
-
+    for (int i = 0; i < planner.path.size(); i++) {
+        cout << "Plotting robot path, " << i+1 << " row of " << planner.path.size() << endl;
+        plt::plot({ (double) planner.path[i][0]}, { (double) planner.path[i][1]}, "b.");
+    }
     
     //Save the image and close the plot
     plt::save("./Images/Path.png");
